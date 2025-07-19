@@ -7,12 +7,7 @@ CFLAGS += -I c_src/secp256k1 -I c_src/secp256k1/src -I c_src/secp256k1/include
 CFLAGS += -I$(../libsecp256k1)/src
 SECP256K1_VERSION = v0.5.0
 
-ifneq ($(OS),Windows_NT)
-CFLAGS += -fPIC
-ENDING = dll
-else
 ENDING = so
-endif
 
 LIBSECP256K1 = c_src/secp256k1/.libs/libsecp256k1.a
 
