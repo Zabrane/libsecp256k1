@@ -5,7 +5,7 @@ ERLANG_PATH ?= $(shell erl -eval 'io:format("~s", [lists:concat([code:root_dir()
 CFLAGS += -I"$(ERLANG_PATH)"
 CFLAGS += -I c_src/secp256k1 -I c_src/secp256k1/src -I c_src/secp256k1/include
 CFLAGS += -I$(../libsecp256k1)/src
-SECP256K1_VERSION = v0.4.0
+SECP256K1_VERSION = v0.5.0
 
 ifneq ($(OS),Windows_NT)
 CFLAGS += -fPIC
@@ -38,8 +38,6 @@ CXXFLAGS += -DSTATIC_ERLANG_NIF=1
 all: priv/libsecp256k1.a
 endif
 
-priv/libsecp256k1_nif.dll: | priv/libsecp256k1_nif.so
-	cp  priv/libsecp256k1_nif.so  priv/libsecp256k1_nif.dll
 priv/libsecp256k1_nif.so: c_src/libsecp256k1_nif.c $(EXTRALIBS)
 	$(CC) $(CFLAGS) -shared -o $@ c_src/libsecp256k1_nif.c $(EXTRALIBS) $(SECPLDFLAGS)
 
