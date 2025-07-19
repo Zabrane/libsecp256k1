@@ -1,0 +1,15 @@
+%% Distributed under the MIT License under LICENSE
+%% https://github.com/bitcoin/secp256k1
+
+{application, libsecp256k1,
+ [
+  {description, "NIF bindings for libsecp256k1"},
+  {vsn, "0.4.0"},
+  {modules, []},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
